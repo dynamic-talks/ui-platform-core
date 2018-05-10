@@ -2,7 +2,9 @@
   "name": "ui-plarform-core",
   "version": "0.0.1",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "build": "gulp build"
+  },
   "dependencies": {
     "redux": "^3.7.2",
     "redux-observable": "^0.18.0",
