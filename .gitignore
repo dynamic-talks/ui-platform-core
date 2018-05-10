@@ -1,0 +1,19 @@
+# IDE ignores
+.idea/
+.vscode/
+*.iml
+*.sublime*
+
+# common ignores
+node_modules
+*.log
+*.log.*
+.DS_STORE
+._*
+
+# build / deploy ignores
+tmp/
+log/
+public/build
+
+*.zip
