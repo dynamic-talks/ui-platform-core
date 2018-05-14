@@ -86,4 +86,4 @@ var ServerUiApplication = exports.ServerUiApplication = function (_UiApplication
   return ServerUiApplication;
 }(_uiApplication.UiApplication);
 
-ServerUiApplication.$inject = ['ioc', 'serverConfig'];
+ServerUiApplication.$inject = ['ioc', 'config'];

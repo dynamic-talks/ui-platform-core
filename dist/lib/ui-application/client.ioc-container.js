@@ -44,7 +44,7 @@ function createClientIoCContainer(configData) {
     // Api Adapter
     httpTransport: (0, _libioc.iocFactory)(_AxiosTransport.createAxiosTransport),
     pipelines: _pipeline.createServerPipeline,
-    api: (0, _libioc.iocFactory)(_apiAdapter.createApiAdapter),
+    apiAdapter: (0, _libioc.iocFactory)(_apiAdapter.createApiAdapter),
 
     app: (0, _libioc.iocClass)(_client.ClientUiApplication)
   });

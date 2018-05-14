@@ -42,7 +42,7 @@ function createServerIocContainer(_ref) {
     BASE_CONFIG_PATH: baseConfigPath,
     CONFIG_PATH: configPath,
     configReader: (0, _libioc.iocClass)(_ConfigurationReader.ConfigurationReader),
-    serverConfig: (0, _libioc.iocFactory)(_ServerConfigurationManager.createServerConfigurationManager),
+    config: (0, _libioc.iocFactory)(_ServerConfigurationManager.createServerConfigurationManager),
 
     // logger, todo: should be replaced with real logger
     // e.g. https://github.com/GeorP/js-ntc-logger
@@ -51,7 +51,7 @@ function createServerIocContainer(_ref) {
     // Api Adapter
     httpTransport: (0, _libioc.iocFactory)(_NodeRequestTransport.createNodeRequestTransport),
     pipelines: _pipeline.createServerPipeline,
-    api: (0, _libioc.iocFactory)(_apiAdapter.createApiAdapter),
+    apiAdapter: (0, _libioc.iocFactory)(_apiAdapter.createApiAdapter),
 
     ServerUiApplication: (0, _libioc.iocClass)(_server.ServerUiApplication)
   });

@@ -229,5 +229,5 @@ function createNodeRequestTransport(config, rootLogger) {
   return new NodeRequestTransport(config, rootLogger.getInterface('transport.node_request'));
 }
 
-createNodeRequestTransport.$inject = ['serverConfig', 'logger'];
+createNodeRequestTransport.$inject = ['config', 'logger'];
 createNodeRequestTransport.$singleton = true;
