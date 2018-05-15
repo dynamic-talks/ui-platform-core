@@ -62,7 +62,20 @@ function createStore(_ref) {
   // ======================================================
   // Create redux-observable epics middleware
   // ======================================================
-  middleware.push((0, _reduxObservable.createEpicMiddleware)(_reduxObservable.combineEpics.apply({}, epics), { dependencies: ioc }));
+  var epicDeps = epics
+  // filter epics with declared deps
+  .filter(function (epicItem) {
+    return Array.isArray(epicItem.$inject);
+  })
+  // gather deps into single dep list with unique values
+  .reduce(function (res, _ref2) {
+    var $inject = _ref2.$inject;
+    return res.concat($inject.filter(function (dep) {
+      return !res.includes(dep);
+    }));
+  }, []);
+
+  middleware.push((0, _reduxObservable.createEpicMiddleware)(_reduxObservable.combineEpics.apply({}, epics), { dependencies: ioc.resolveAll(epicDeps) }));
 
   // ======================================================
   // Enable `Redux-devtool` for current store instance (Only for DEV env)
