@@ -8,6 +8,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.createStore = createStore;
 
+var _libioc = require('libioc');
+
 var _redux = require('redux');
 
 var _reduxObservable = require('redux-observable');
@@ -20,7 +22,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
  * @param {Function|Object} reducers
  * @param {Array|Function} middleware
  * @param {Object} state
+ * @param {Array} epics
  * @param {Function} composeEnhancers
+ * @param {IoCContainer} ioc
  * @returns {Store<{}>}
  */
 function createStore(_ref) {
@@ -32,7 +36,9 @@ function createStore(_ref) {
       _ref$state = _ref.state,
       state = _ref$state === undefined ? {} : _ref$state,
       _ref$composeEnhancers = _ref.composeEnhancers,
-      composeEnhancers = _ref$composeEnhancers === undefined ? _redux.compose : _ref$composeEnhancers;
+      composeEnhancers = _ref$composeEnhancers === undefined ? _redux.compose : _ref$composeEnhancers,
+      _ref$ioc = _ref.ioc,
+      ioc = _ref$ioc === undefined ? new _libioc.IoCContainer() : _ref$ioc;
 
   // ======================================================
   // Middleware Configuration
@@ -56,7 +62,7 @@ function createStore(_ref) {
   // ======================================================
   // Create redux-observable epics middleware
   // ======================================================
-  middleware.push((0, _reduxObservable.createEpicMiddleware)(_reduxObservable.combineEpics.apply({}, epics)));
+  middleware.push((0, _reduxObservable.createEpicMiddleware)(_reduxObservable.combineEpics.apply({}, epics), { dependencies: ioc }));
 
   // ======================================================
   // Enable `Redux-devtool` for current store instance (Only for DEV env)
