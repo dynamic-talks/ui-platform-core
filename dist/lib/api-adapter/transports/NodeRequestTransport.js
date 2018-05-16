@@ -46,8 +46,9 @@ var NodeRequestTransport = exports.NodeRequestTransport = function (_BaseTranspo
 
       //todo: let logData = this.createRequestLogData(config, context);
 
-      //todo: this._logger.info('Preparing http request', logData);
+      var logData = {};
 
+      //todo: this._logger.info('Preparing http request', logData);
       this._logger.info('Preparing http request');
 
       /**
