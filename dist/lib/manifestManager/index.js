@@ -3,15 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ManifestManager = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _fs = require('fs');
-
-var _fs2 = _interopRequireDefault(_fs);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23,13 +16,17 @@ var ManifestManager = exports.ManifestManager = function () {
       throw 'Can\'t init ManifestManger instance without passing manifestPath as a param.';
     }
     this.manifestPath = manifestPath;
+    this.setManifest();
   }
 
   _createClass(ManifestManager, [{
     key: 'setManifest',
     value: function setManifest() {
-      this._manifest = _fs2.default.readFileSync(this.manifestPath);
-      console.log('Manifest successfully has been set.');
+      if (!this._manifest) {
+        this._manifest = require(this.manifestPath);
+      }
+
+      console.log('Manifest successfully has been set. ' + this._manifest);
     }
   }, {
     key: 'get',
@@ -38,11 +35,7 @@ var ManifestManager = exports.ManifestManager = function () {
         return console.error('Trying to get ' + manifestProp + ' prop of not existed manifest. Try to call setManifest method on an instance.');
       }
 
-      if (!this.manifest[manifestProp]) {
-        return console.error('There\'s no ' + manifestProp + ' prop found.');
-      }
-
-      return this._manifest[manifestProp];
+      return this._manifest[manifestProp] || console.error('There\'s no ' + manifestProp + ' prop found. ' + Object.keys(this._manifest));
     }
   }]);
 
