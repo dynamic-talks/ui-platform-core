@@ -21,7 +21,7 @@ var _pipeline = require('../api-adapter/pipelines/server/pipeline.create');
 
 var _server = require('./server.ui-application');
 
-var _manifestManager = require('../manifestManager');
+var _assetsManifestManager = require('../assets-manifest-manager');
 
 /**
  * Initial server IoC container with all bootstrap dependencies
@@ -46,7 +46,7 @@ function createServerIocContainer(_ref) {
     CONFIG_PATH: configPath,
     MANIFEST_PATH: assetsManifestPath,
     configReader: (0, _libioc.iocClass)(_ConfigurationReader.ConfigurationReader),
-    manifestManager: (0, _libioc.iocClass)(_manifestManager.ManifestManager),
+    manifestManager: (0, _libioc.iocClass)(_assetsManifestManager.AssetsManifestManager),
     config: (0, _libioc.iocFactory)(_ServerConfigurationManager.createServerConfigurationManager),
 
     // logger, todo: should be replaced with real logger
