@@ -78,5 +78,4 @@ var ClientUiApplication = exports.ClientUiApplication = function (_UiApplication
   return ClientUiApplication;
 }(_uiApplication.UiApplication);
 
-ClientUiApplication.$inject = ['ioc', 'config'];
 ClientUiApplication.$singletion = true;

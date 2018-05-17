@@ -6,13 +6,20 @@
     "build": "gulp build"
   },
   "dependencies": {
+    "cli-args": "^2.0.0",
     "libioc": "^1.0.6",
+    "lodash.get": "^4.4.2",
+    "lodash.merge": "^4.6.1",
+    "lodash.pick": "^4.4.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
     "recompose": "^0.27.0",
     "redux": "^3.7.2",
     "redux-observable": "^0.18.0",
-    "rxjs": "^5.5.9"
+    "request": "^2.86.0",
+    "rxjs": "^5.5.9",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "babel-plugin-module-alias": "^1.6.0",

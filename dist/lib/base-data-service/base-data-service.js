@@ -28,17 +28,21 @@ var BaseDataService = exports.BaseDataService = function () {
      * Generate factory function for concrete Data Service with supplied Api Service
      * Output factory is intended for IoC container
      *
-     * @param  {BaseApiService} ApiService description
+     * @param  {BaseApiService} ApiService
+     * @param  {Boolean} [isSingleton]
      * @return {Function}
      */
     value: function createFactory(ApiService) {
       var _this = this;
+
+      var isSingleton = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
       var factory = function factory(apiAdapter, config, logger) {
         return new _this(ApiService.factory(apiAdapter, config, logger), config, logger);
       };
 
       factory.$inject = ['apiAdapter', 'config', 'logger'];
+      factory.$singleton = isSingleton;
 
       return (0, _libioc.iocFactory)(factory);
     }

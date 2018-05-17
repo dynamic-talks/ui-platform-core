@@ -102,9 +102,7 @@ var UiApplication = exports.UiApplication = function () {
     value: function configure() {
       var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
           _ref$state = _ref.state,
-          state = _ref$state === undefined ? {} : _ref$state,
-          _ref$rawConfig = _ref.rawConfig,
-          rawConfig = _ref$rawConfig === undefined ? null : _ref$rawConfig;
+          state = _ref$state === undefined ? {} : _ref$state;
 
       if (this._configured) {
         throw new Error('UI application already configured!');
@@ -254,7 +252,14 @@ var UiApplication = exports.UiApplication = function () {
     get: function get() {
       return this._store;
     }
+  }, {
+    key: 'ioc',
+    get: function get() {
+      return this._ioc;
+    }
   }]);
 
   return UiApplication;
 }();
+
+UiApplication.$inject = ['ioc', 'config'];
