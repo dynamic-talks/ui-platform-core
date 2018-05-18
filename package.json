@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "cli-args": "^2.0.0",
+    "glob": "^7.1.2",
     "libioc": "^1.0.6",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.1",
