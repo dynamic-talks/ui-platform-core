@@ -14,5 +14,5 @@ var config = new ConfigurationReader({
 var serverConfig = new ServerConfigurationManager({ config: config });
 var clientConfig = new ConfigurationManager({ config: serverConfig.getClientConfiguration() });
 
-console.log('serverConfig is ' + util.inspect(serverConfig.config));
-console.log('clientConfig is ' + util.inspect(clientConfig.config));
+console.info('serverConfig is ' + util.inspect(serverConfig.config));
+console.info('clientConfig is ' + util.inspect(clientConfig.config));

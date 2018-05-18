@@ -20,7 +20,9 @@ var withReduxProvider = exports.withReduxProvider = function withReduxProvider(s
     var ReduxProvider = function ReduxProvider(props) {
       return _react2.default.createElement(
         _reactRedux.Provider,
-        _extends({ store: store }, props),
+        _extends({
+          store: store
+        }, props),
         _react2.default.createElement(Component, null)
       );
     };

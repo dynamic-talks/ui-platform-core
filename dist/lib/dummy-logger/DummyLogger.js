@@ -44,5 +44,3 @@ var DummyLogger = exports.DummyLogger = function () {
 
   return DummyLogger;
 }();
-
-;

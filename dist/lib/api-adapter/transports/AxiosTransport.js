@@ -34,13 +34,12 @@ var AxiosTransport = exports.AxiosTransport = function (_BaseTransport) {
 
   _createClass(AxiosTransport, [{
     key: 'request',
-    value: function request(config, daoMeta) {
-      var context = daoMeta.context;
+    value: function request(config) /*meta*/{
+      //let { context } = meta;
       //let logData = this.createRequestLogData(config, context , window.location.origin);
 
       // TODO: recover commented code as soon as `logData` is implemented
       // this._logger.debug('ApiAdapter responsePipeline finished', logData.clone().httpBody(config.data), null, ['app_core', 'ApiAdapter', 'ajax']);
-
       this._logger.debug('ApiAdapter responsePipeline finished');
 
       var availableMethods = ['get', 'delete', 'head', 'post', 'put', 'patch'];
