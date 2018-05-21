@@ -14,5 +14,5 @@ gulp.task('build', () => {
   return gulp
     .src('./lib/**/*.js')
     .pipe(babel())
-    .pipe(gulp.dest('./dist/lib'))
-})
+    .pipe(gulp.dest('./dist/lib'));
+});

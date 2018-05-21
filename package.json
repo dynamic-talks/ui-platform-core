@@ -3,14 +3,29 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "gulp build"
+    "build": "gulp build",
+    "eslint": "eslint ./",
+    "stylelint": "stylelint \"./src/**/*.scss\" -s scss",
+    "lint": "npm run eslint && npm run stylelint",
+    "precommit": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint",
+    "*.scss": "stylelint"
   },
   "dependencies": {
     "cli-args": "^2.0.0",
+    "glob": "^7.1.2",
     "libioc": "^1.0.6",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.1",
     "lodash.pick": "^4.4.0",
+    "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
@@ -22,6 +37,7 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "babel-plugin-module-alias": "^1.6.0",
     "babel-plugin-transform-require-ignore": "^0.1.1",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -30,7 +46,12 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "del": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.8.2",
     "gulp": "^3.9.1",
-    "gulp-babel-compile": "0.0.3"
+    "gulp-babel-compile": "0.0.3",
+    "lint-staged": "^7.1.0",
+    "stylelint": "^9.2.0",
+    "stylelint-config-standard": "^18.2.0"
   }
 }

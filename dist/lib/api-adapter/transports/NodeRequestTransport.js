@@ -42,12 +42,12 @@ var NodeRequestTransport = exports.NodeRequestTransport = function (_BaseTranspo
     value: function request(config, meta) {
       var _this2 = this;
 
-      var context = meta.context;
+      //const { context } = meta;
 
       //todo: let logData = this.createRequestLogData(config, context);
+      var logData = {};
 
       //todo: this._logger.info('Preparing http request', logData);
-
       this._logger.info('Preparing http request');
 
       /**
@@ -100,11 +100,9 @@ var NodeRequestTransport = exports.NodeRequestTransport = function (_BaseTranspo
 
   }, {
     key: 'stream',
-    value: function stream(config, _ref) {
+    value: function stream(config, /*{ context, logData }*/meta) {
       var _this3 = this;
 
-      var context = _ref.context,
-          logData = _ref.logData;
       var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
       //logData = logData || this.createRequestLogData(config, context);
