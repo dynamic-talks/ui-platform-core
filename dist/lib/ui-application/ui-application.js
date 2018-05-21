@@ -259,6 +259,11 @@ var UiApplication = exports.UiApplication = function () {
     get: function get() {
       return this._ioc;
     }
+  }, {
+    key: 'config',
+    get: function get() {
+      return this._config;
+    }
   }]);
 
   return UiApplication;
