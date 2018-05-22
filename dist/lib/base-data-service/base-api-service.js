@@ -35,12 +35,13 @@ var BaseApiService = exports.BaseApiService = function () {
   function BaseApiService(apiAdapter, config, logger) {
     _classCallCheck(this, BaseApiService);
 
-    /*if (! (apiAdapter instanceof ApiAdapter)) {
+    if (!(apiAdapter instanceof _apiAdapter.ApiAdapter)) {
       throw new TypeError('[BaseApiService] Unrecognized `apiAdapter` argument, it must be the instance of `ApiAdapter`');
     }
-     if (! (config instanceof ConfigurationManager)) {
+
+    if (!(config instanceof _ConfigurationManager.ConfigurationManager)) {
       throw new TypeError('[BaseApiService] Unrecognized `config` argument, it must be the instance of `ConfigurationManager`');
-    }*/
+    }
 
     this.apiAdapter = apiAdapter;
     this.config = config;
