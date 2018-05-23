@@ -38,12 +38,14 @@ var SVGIcon = function (_Component) {
     value: function render() {
       var _props = this.props,
           icon = _props.icon,
-          spritePath = _props.spritePath;
+          manifestManager = _props.manifestManager;
 
+
+      var spritePrefix = manifestManager && manifestManager.get('sprite.svg') ? '/build/' + manifestManager.get('sprite.svg') : '';
 
       return _react2.default.createElement('svg', {
         /*eslint-disable react/no-danger */
-        dangerouslySetInnerHTML: { __html: '<use xlink:href="' + spritePath + '#' + icon + '"></use>' }
+        dangerouslySetInnerHTML: { __html: '<use xlink:href="' + spritePrefix + '#' + icon + '"></use>' }
         /*eslint-enabled react/no-danger */
       });
     }
@@ -54,9 +56,9 @@ var SVGIcon = function (_Component) {
 
 SVGIcon.propTypes = {
   icon: _propTypes2.default.string.isRequired,
-  spritePath: _propTypes2.default.string
+  manifestManager: _propTypes2.default.string
 };
 SVGIcon.defaultProps = {
-  spritePath: ''
+  manifestManager: ''
 };
 exports.default = (0, _connectWithIoC.connectWithIoC)(['manifestManager'])(SVGIcon);
