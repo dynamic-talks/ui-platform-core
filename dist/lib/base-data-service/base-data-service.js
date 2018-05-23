@@ -58,12 +58,13 @@ var BaseDataService = exports.BaseDataService = function () {
   function BaseDataService(apiService, config, logger) {
     _classCallCheck(this, BaseDataService);
 
-    /*if (! (apiService instanceof BaseApiService)) {
+    if (!(apiService instanceof _baseApiService.BaseApiService)) {
       throw new TypeError('[BaseDataService] Unrecognized `apiService` argument, it must be the instance of `BaseApiService`');
     }
-     if (! (config instanceof ConfigurationManager)) {
+
+    if (!(config instanceof _ConfigurationManager.ConfigurationManager)) {
       throw new TypeError('[BaseDataService] Unrecognized `config` argument, it must be the instance of `ConfigurationManager`');
-    }*/
+    }
 
     this.api = apiService;
     this.config = config;
