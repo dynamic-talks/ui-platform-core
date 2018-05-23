@@ -46,7 +46,9 @@ function createServerIocContainer(_ref) {
     CONFIG_PATH: configPath,
     MANIFEST_PATH: assetsManifestPath,
     configReader: (0, _libioc.iocClass)(_ConfigurationReader.ConfigurationReader),
-    manifestManager: (0, _libioc.iocClass)(_assetsManifestManager.AssetsManifestManager),
+    manifestManager: (0, _libioc.iocFactory)(function () {
+      return new _assetsManifestManager.AssetsManifestManager(require(assetsManifestPath));
+    }),
     config: (0, _libioc.iocFactory)(_ServerConfigurationManager.createServerConfigurationManager),
 
     // logger, todo: should be replaced with real logger
