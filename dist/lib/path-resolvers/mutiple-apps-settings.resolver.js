@@ -13,6 +13,8 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
+var _appVersion = require('./app-version.resolver');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -28,31 +30,20 @@ function resolveMultipleAppsSettings(rootDir) {
   }).map(function (appDir) {
     var rootAppDir = _path2.default.join(rootDir, appDir);
 
-    // prepare app version file
-    var appVersionFilename = _path2.default.join(rootAppDir, 'VERSION');
-    var appVersion = '0.0.0';
-
-    if (_fs2.default.existsSync(appVersionFilename)) {
-      appVersion = _fs2.default.readFileSync(appVersionFilename, { encoding: 'utf8' }).trim();
-    } else {
-      console.warn('"VERSION" file isn\'t found in ' + rootAppDir);
-    }
-
     // read app params from '<APP_DIR>/LAUNCH_PARAMS'
+    // todo: will be revised idea behind LAUNCH_PARAMS file
     var appParamsFilename = _path2.default.join(rootAppDir, 'LAUNCH_PARAMS');
     var appParams = {};
 
     if (_fs2.default.existsSync(appParamsFilename)) {
       appParams = JSON.parse(_fs2.default.readFileSync(appParamsFilename, { encoding: 'utf8' }));
-    } else {
-      console.warn('"PARAMS" file isn\'t found in ' + rootAppDir);
     }
 
     return {
       name: appDir.replace(/\s/g, ''),
       rootPath: rootAppDir,
-      version: appVersion,
-      params: appParams
+      version: (0, _appVersion.resolveAppVersion)(rootAppDir),
+      configPath: appParams.configPath
     };
   });
 }
