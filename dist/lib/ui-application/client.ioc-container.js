@@ -48,7 +48,6 @@ function createClientIoCContainer(configData, assetsManifest) {
     pipelines: _pipeline.createServerPipeline,
     apiAdapter: (0, _libioc.iocFactory)(_apiAdapter.createApiAdapter),
     app: (0, _libioc.iocClass)(_client.ClientUiApplication),
-    //manifestManager: iocClass(AssetsManifestManager),
     manifestManager: (0, _libioc.iocFactory)(function () {
       return new _assetsManifestManager.AssetsManifestManager(assetsManifest);
     })

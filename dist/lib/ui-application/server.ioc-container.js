@@ -33,7 +33,7 @@ var _assetsManifestManager = require('../assets-manifest-manager');
 function createServerIocContainer(_ref) {
   var baseConfigPath = _ref.baseConfigPath,
       configPath = _ref.configPath,
-      assetsManifestPath = _ref.assetsManifestPath;
+      assetsManifest = _ref.assetsManifest;
 
   var iocContainer = new _libioc.IoCContainer();
 
@@ -44,10 +44,9 @@ function createServerIocContainer(_ref) {
     // register config specific entities
     BASE_CONFIG_PATH: baseConfigPath,
     CONFIG_PATH: configPath,
-    MANIFEST_PATH: assetsManifestPath,
     configReader: (0, _libioc.iocClass)(_ConfigurationReader.ConfigurationReader),
     manifestManager: (0, _libioc.iocFactory)(function () {
-      return new _assetsManifestManager.AssetsManifestManager(require(assetsManifestPath));
+      return new _assetsManifestManager.AssetsManifestManager(assetsManifest);
     }),
     config: (0, _libioc.iocFactory)(_ServerConfigurationManager.createServerConfigurationManager),
 
