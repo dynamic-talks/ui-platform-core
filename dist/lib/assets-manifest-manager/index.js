@@ -16,6 +16,11 @@ var AssetsManifestManager = exports.AssetsManifestManager = function () {
   }
 
   _createClass(AssetsManifestManager, [{
+    key: "getAllPaths",
+    value: function getAllPaths() {
+      return this._manifest;
+    }
+  }, {
     key: "get",
     value: function get(manifestProp) {
       if (!this._manifest) {
