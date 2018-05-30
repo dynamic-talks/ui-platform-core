@@ -13,7 +13,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-require('rxjs');
+require('./rx.import-entities');
 
 var _recompose = require('recompose');
 
