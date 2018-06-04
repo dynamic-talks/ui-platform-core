@@ -1,0 +1,14 @@
+{
+  "timers": "fake",
+  "testEnvironment": "jsdom",
+  "moduleNameMapper": {
+    "platform-core(.*)": "<rootDir>/platform/platform-core$1"
+  },
+  "moduleDirectories": [
+    ".",
+    "src",
+    "src/core",
+    "src/ui",
+    "node_modules"
+  ]
+}
