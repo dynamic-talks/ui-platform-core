@@ -7,7 +7,7 @@ exports.createClientIoCContainer = createClientIoCContainer;
 
 var _libioc = require('libioc');
 
-var _ConfigurationManager = require('../configuration-manager/modules/ConfigurationManager');
+var _ConfigurationManager = require('../configuration-manager/ConfigurationManager');
 
 var _dummyLogger = require('../dummy-logger');
 

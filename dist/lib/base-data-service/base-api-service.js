@@ -9,7 +9,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _apiAdapter = require('../api-adapter');
 
-var _ConfigurationManager = require('../configuration-manager/modules/ConfigurationManager');
+var _ConfigurationManager = require('../configuration-manager/ConfigurationManager');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 

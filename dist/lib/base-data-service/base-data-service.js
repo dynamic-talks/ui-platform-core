@@ -11,7 +11,7 @@ var _libioc = require('libioc');
 
 var _baseApiService = require('./base-api-service');
 
-var _ConfigurationManager = require('../configuration-manager/modules/ConfigurationManager');
+var _ConfigurationManager = require('../configuration-manager/ConfigurationManager');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
