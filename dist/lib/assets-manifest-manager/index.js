@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -9,33 +9,39 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var AssetsManifestManager = exports.AssetsManifestManager = function () {
-  function AssetsManifestManager(manifest) {
+  function AssetsManifestManager(manifestPath) {
     _classCallCheck(this, AssetsManifestManager);
 
-    this._manifest = manifest;
+    if (!manifestPath) {
+      throw new Error('Can\'t init ManifestManger instance without passing manifestPath as a param.');
+    }
+    this.loadManifest(manifestPath);
   }
 
   _createClass(AssetsManifestManager, [{
-    key: "getAllPaths",
-    value: function getAllPaths() {
-      return this._manifest;
+    key: 'loadManifest',
+    value: function loadManifest(manifestPath) {
+      if (!this._manifest) {
+        this._manifest = require(manifestPath);
+      }
     }
   }, {
-    key: "get",
+    key: 'get',
     value: function get(manifestProp) {
       if (!this._manifest) {
-        return console.error("Trying to get " + manifestProp + " prop of not existed manifest. Try to call loadManifest method on an instance.");
+        return console.error('Trying to get ' + manifestProp + ' prop of not existed manifest. Try to call loadManifest method on an instance.');
       }
 
       if (this._manifest[manifestProp]) {
         return this._manifest[manifestProp];
       }
 
-      throw new Error("There's no " + manifestProp + " prop found. " + Object.keys(this._manifest));
+      throw new Error('There\'s no ' + manifestProp + ' prop found. ' + Object.keys(this._manifest));
     }
   }]);
 
   return AssetsManifestManager;
 }();
 
+AssetsManifestManager.$inject = ['MANIFEST_PATH'];
 AssetsManifestManager.$singleton = true;
