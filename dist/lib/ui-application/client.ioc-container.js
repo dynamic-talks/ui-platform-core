@@ -19,15 +19,13 @@ var _pipeline = require('../api-adapter/pipelines/server/pipeline.create');
 
 var _client = require('./client.ui-application');
 
-var _assetsManifestManager = require('../assets-manifest-manager');
-
 /**
  * Initial client IoC container with all bootstrap dependencies
  *
  * @param configData
  * @returns {IoCContainer}
  */
-function createClientIoCContainer(configData, assetsManifest) {
+function createClientIoCContainer(configData) {
   var iocContainer = new _libioc.IoCContainer();
 
   iocContainer.registerAll({
@@ -47,10 +45,8 @@ function createClientIoCContainer(configData, assetsManifest) {
     httpTransport: (0, _libioc.iocFactory)(_AxiosTransport.createAxiosTransport),
     pipelines: _pipeline.createServerPipeline,
     apiAdapter: (0, _libioc.iocFactory)(_apiAdapter.createApiAdapter),
-    app: (0, _libioc.iocClass)(_client.ClientUiApplication),
-    manifestManager: (0, _libioc.iocFactory)(function () {
-      return new _assetsManifestManager.AssetsManifestManager(assetsManifest);
-    })
+
+    app: (0, _libioc.iocClass)(_client.ClientUiApplication)
   });
 
   return iocContainer;
