@@ -19,6 +19,7 @@
     "*.scss": "stylelint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "cli-args": "^2.0.0",
     "glob": "^7.1.2",
     "libioc": "^1.0.6",
