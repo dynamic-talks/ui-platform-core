@@ -26,6 +26,7 @@
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.1",
     "lodash.pick": "^4.4.0",
+    "minimist": "^1.2.0",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
