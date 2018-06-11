@@ -3,26 +3,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.configReaderFactory = configReaderFactory;
+exports.createReaderByType = createReaderByType;
 
-var _EnvFileConfigurationReader = require('./EnvFileConfigurationReader');
+var _FileConfigurationReader = require('./FileConfigurationReader');
 
-/**
- * Responsible to instantiate configuration reader according to supplied `type` argument
- * @param {String} type
- * @param {String} configReaderParams
- * @returns {BaseConfigurationReader}
- */
-function configReaderFactory(type, configReaderParams) {
+var readersCollection = [_FileConfigurationReader.FileConfigurationReader];
 
-  switch (type) {
-    case _EnvFileConfigurationReader.EnvFileConfigurationReader.readerType:
-      return new _EnvFileConfigurationReader.EnvFileConfigurationReader(configReaderParams);
+function createReaderByType(type) {
+  var TargetReader = readersCollection.find(function (_ref) {
+    var readerType = _ref.readerType;
+    return readerType === type;
+  });
 
-    default:
-      throw new TypeError('configReaderFactory: Unrecognized reader type "' + type + '"');
+  if (!TargetReader) {
+    throw new TypeError('ConfigurationManager: Unrecognized reader type "' + type + '"');
   }
-}
 
-configReaderFactory.$singleton = true;
-configReaderFactory.$inject = ['CONFIG_READER_TYPE', 'CONFIG_READER_PARAMS'];
+  return new TargetReader();
+}

@@ -11,7 +11,7 @@ var _libioc = require('libioc');
 
 var _baseApiService = require('./base-api-service');
 
-var _ConfigurationManager = require('../configuration-manager/ConfigurationManager');
+var _Configuration = require('../configuration-manager/Configuration');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -62,7 +62,7 @@ var BaseDataService = exports.BaseDataService = function () {
       throw new TypeError('[BaseDataService] Unrecognized `apiService` argument, it must be the instance of `BaseApiService`');
     }
 
-    if (!(config instanceof _ConfigurationManager.ConfigurationManager)) {
+    if (!(config instanceof _Configuration.Configuration)) {
       throw new TypeError('[BaseDataService] Unrecognized `config` argument, it must be the instance of `ConfigurationManager`');
     }
 

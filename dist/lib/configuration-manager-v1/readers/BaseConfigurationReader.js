@@ -52,13 +52,16 @@ var BaseConfigurationReader = exports.BaseConfigurationReader = function () {
      * @param {String} configDirPath - directory path, where config files should be placed
      */
 
+
+    // the name of particular reader, which is used as type identifier in `configReaderFactory`
+
   }, {
     key: 'loadDefaultConfigFile',
     value: function loadDefaultConfigFile(configDirPath) {
       var configData = this.loadConfigFile(path.join(configDirPath, 'default'));
 
       if (!configData) {
-        throw new Error('AbstractConfigurationReader: default config file isn\'t found in "' + configDirPath + '"');
+        throw new Error('BaseConfigurationReader: default config file isn\'t found in "' + configDirPath + '"');
       }
 
       return configData;

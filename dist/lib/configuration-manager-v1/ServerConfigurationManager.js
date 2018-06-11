@@ -53,5 +53,3 @@ function serverConfigurationFactory(configReader) {
 
 serverConfigurationFactory.$inject = ['configReader'];
 serverConfigurationFactory.$singleton = true;
-
-exports.default = ServerConfigurationManager;
