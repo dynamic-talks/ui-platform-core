@@ -30,20 +30,10 @@ function resolveMultipleAppsSettings(rootDir) {
   }).map(function (appDir) {
     var rootAppDir = _path2.default.join(rootDir, appDir);
 
-    // read app params from '<APP_DIR>/LAUNCH_PARAMS'
-    // todo: will be revised idea behind LAUNCH_PARAMS file
-    var appParamsFilename = _path2.default.join(rootAppDir, 'LAUNCH_PARAMS');
-    var appParams = {};
-
-    if (_fs2.default.existsSync(appParamsFilename)) {
-      appParams = JSON.parse(_fs2.default.readFileSync(appParamsFilename, { encoding: 'utf8' }));
-    }
-
     return {
-      name: appDir.replace(/\s/g, ''),
+      appName: appDir.replace(/\s/g, ''),
       rootPath: rootAppDir,
-      version: (0, _appVersion.resolveAppVersion)(rootAppDir),
-      configPath: appParams.configPath
+      version: (0, _appVersion.resolveAppVersion)(rootAppDir)
     };
   });
 }
