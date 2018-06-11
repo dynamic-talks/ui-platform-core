@@ -32,7 +32,7 @@ function resolveMultipleAppsSettings(rootDir) {
 
     return {
       appName: appDir.replace(/\s/g, ''),
-      rootPath: rootAppDir,
+      rootDir: rootAppDir,
       version: (0, _appVersion.resolveAppVersion)(rootAppDir)
     };
   });
