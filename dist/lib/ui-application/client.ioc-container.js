@@ -7,7 +7,7 @@ exports.createClientIoCContainer = createClientIoCContainer;
 
 var _libioc = require('libioc');
 
-var _ConfigurationManager = require('../configuration-manager/modules/ConfigurationManager');
+var _Configuration = require('../configuration-manager/Configuration');
 
 var _dummyLogger = require('../dummy-logger');
 
@@ -38,7 +38,7 @@ function createClientIoCContainer(configData) {
 
     // App configuration
     config: (0, _libioc.iocFactory)(function () {
-      return new _ConfigurationManager.ConfigurationManager(configData);
+      return new _Configuration.Configuration(configData);
     }).asSingleton(),
 
     // Api Adapter

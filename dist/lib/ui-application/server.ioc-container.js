@@ -7,10 +7,6 @@ exports.createServerIocContainer = createServerIocContainer;
 
 var _libioc = require('libioc');
 
-var _ConfigurationReader = require('../configuration-manager/modules/ConfigurationReader');
-
-var _ServerConfigurationManager = require('../configuration-manager/modules/ServerConfigurationManager');
-
 var _dummyLogger = require('../dummy-logger');
 
 var _apiAdapter = require('../api-adapter');
@@ -26,13 +22,12 @@ var _assetsManifestManager = require('../assets-manifest-manager');
 /**
  * Initial server IoC container with all bootstrap dependencies
  *
- * @param {String} baseConfigPath
- * @param {String} configPath
+ * @param {ServerConfiguration} config
+ * @param {Object} assetsManifestPath
  * @returns {IoCContainer}
  */
 function createServerIocContainer(_ref) {
-  var baseConfigPath = _ref.baseConfigPath,
-      configPath = _ref.configPath,
+  var config = _ref.config,
       assetsManifestPath = _ref.assetsManifestPath;
 
   var iocContainer = new _libioc.IoCContainer();
@@ -41,13 +36,12 @@ function createServerIocContainer(_ref) {
     // some deps rely on IoC itself, so due to that we need to register IoC instance as well
     ioc: iocContainer,
 
-    // register config specific entities
-    BASE_CONFIG_PATH: baseConfigPath,
-    CONFIG_PATH: configPath,
+    // register config
+    config: config,
+
+    // manifest specific entities
     MANIFEST_PATH: assetsManifestPath,
-    configReader: (0, _libioc.iocClass)(_ConfigurationReader.ConfigurationReader),
     manifestManager: (0, _libioc.iocClass)(_assetsManifestManager.AssetsManifestManager),
-    config: (0, _libioc.iocFactory)(_ServerConfigurationManager.createServerConfigurationManager),
 
     // logger, todo: should be replaced with real logger
     // e.g. https://github.com/GeorP/js-ntc-logger
